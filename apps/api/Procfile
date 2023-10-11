@@ -1,2 +1,2 @@
-web: nx run api:serve
+web: tree
 # web: npm run start-api
