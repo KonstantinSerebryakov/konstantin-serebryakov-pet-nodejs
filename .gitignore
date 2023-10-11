@@ -19,6 +19,7 @@ node_modules
 
 # IDE - VSCode
 .vscode/*
+.history/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -37,3 +38,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#custom
+envs/*
