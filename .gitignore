@@ -41,3 +41,5 @@ Thumbs.db
 
 #custom
 envs/*
+apps/profiles/src/prisma/.env
+apps/accounts/src/prisma/.env
