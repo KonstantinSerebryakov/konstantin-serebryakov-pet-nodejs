@@ -3,7 +3,6 @@
 
 generator client {
   // output = "../node_modules/@prisma/client"
-  output = env("CLIENT_PATH")
   provider = "prisma-client-js"
 }
 
