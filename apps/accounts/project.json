@@ -20,7 +20,8 @@
           "apps/accounts/src/assets"
         ],
         "isolatedConfig": true,
-        "webpackConfig": "apps/accounts/webpack.config.js"
+        "webpackConfig": "apps/accounts/webpack.config.js",
+        "generatePackageJson": true
       },
       "configurations": {
         "development": {},
