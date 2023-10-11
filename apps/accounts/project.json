@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "target": "node",
@@ -18,7 +16,14 @@
         "tsConfig": "apps/accounts/tsconfig.app.json",
         "assets": [
           "apps/accounts/src/assets",
-          { "input": "procfiles/accounts", "glob": "Procfile", "output": "." }
+          { "input": "procfiles/accounts", "glob": "Procfile", "output": "." },
+          {
+            "input": "apps/accounts/src/prisma",
+            "glob": "**/*",
+            "output": "./prisma"
+          },
+          { "input": "apps/accounts", "glob": ".env", "output": "." },
+          { "input": "apps/accounts", "glob": ".gitignore", "output": "." }
         ],
         "isolatedConfig": true,
         "webpackConfig": "apps/accounts/webpack.config.js",
@@ -46,20 +51,14 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/accounts/**/*.ts"
-        ]
+        "lintFilePatterns": ["apps/accounts/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/accounts/jest.config.ts",
         "passWithNoTests": true

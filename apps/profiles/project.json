@@ -16,7 +16,10 @@
         "tsConfig": "apps/profiles/tsconfig.app.json",
         "assets": [
           "apps/profiles/src/assets",
-          { "input": "procfiles/profiles", "glob": "Procfile", "output": "." }
+          { "input": "procfiles/profiles", "glob": "Procfile", "output": "." },
+          { "input": "apps/profiles/src/prisma", "glob": "**/*", "output": "./prisma" },
+          { "input": "apps/profiles", "glob": ".env", "output": "." },
+          { "input": "apps/profiles", "glob": ".gitignore", "output": "." }
         ],
         "isolatedConfig": true,
         "webpackConfig": "apps/profiles/webpack.config.js",

@@ -17,7 +17,9 @@
         "assets": [
           "apps/api/src/assets",
           { "input": "procfiles/api", "glob": "Procfile", "output": "." },
-          { "input": "apps/api", "glob": "client", "output": "./client" }
+          { "input": "apps/api", "glob": "client", "output": "./client" },
+          { "input": "apps/api", "glob": ".env", "output": "." },
+          { "input": "apps/api", "glob": ".gitignore", "output": "." }
         ],
         "isolatedConfig": true,
         "webpackConfig": "apps/api/webpack.config.js",
