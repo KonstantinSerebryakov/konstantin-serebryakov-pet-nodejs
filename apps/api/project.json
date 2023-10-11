@@ -14,11 +14,14 @@
         "outputPath": "dist/apps/api",
         "main": "apps/api/src/main.ts",
         "tsConfig": "apps/api/tsconfig.app.json",
-        "assets": ["apps/api/src/assets",
-        {"input": "/procfiles/api","glob": "Procfile","output": "."}],
+        "assets": [
+          "apps/api/src/assets",
+          { "input": "procfiles/api", "glob": "Procfile", "output": "." },
+          { "input": "apps/api", "glob": "client", "output": "./client" }
+        ],
         "isolatedConfig": true,
         "webpackConfig": "apps/api/webpack.config.js",
-        "generatePackageJson": true,
+        "generatePackageJson": true
       },
       "configurations": {
         "development": {},

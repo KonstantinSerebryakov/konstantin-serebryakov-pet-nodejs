@@ -1,4 +1,0 @@
-# web: node dist/apps/api
-# web: node api
-# web: tree
-web: npm run start-api

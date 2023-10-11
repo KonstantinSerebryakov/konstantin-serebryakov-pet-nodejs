@@ -14,7 +14,10 @@
         "outputPath": "dist/apps/profiles",
         "main": "apps/profiles/src/main.ts",
         "tsConfig": "apps/profiles/tsconfig.app.json",
-        "assets": ["apps/profiles/src/assets"],
+        "assets": [
+          "apps/profiles/src/assets",
+          { "input": "procfiles/profiles", "glob": "Procfile", "output": "." }
+        ],
         "isolatedConfig": true,
         "webpackConfig": "apps/profiles/webpack.config.js",
         "generatePackageJson": true

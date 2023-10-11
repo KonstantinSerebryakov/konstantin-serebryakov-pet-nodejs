@@ -17,7 +17,8 @@
         "main": "apps/accounts/src/main.ts",
         "tsConfig": "apps/accounts/tsconfig.app.json",
         "assets": [
-          "apps/accounts/src/assets"
+          "apps/accounts/src/assets",
+          { "input": "procfiles/accounts", "glob": "Procfile", "output": "." }
         ],
         "isolatedConfig": true,
         "webpackConfig": "apps/accounts/webpack.config.js",
