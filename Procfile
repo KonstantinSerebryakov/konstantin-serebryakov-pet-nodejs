@@ -1,2 +1,2 @@
-web: nx run accounts:serve
-release: nx run accounts: prisma generate
+web: npx nx run accounts:serve
+release: npx nx run accounts: prisma generate
