@@ -22,7 +22,6 @@
             "glob": "**/*",
             "output": "./prisma"
           },
-          { "input": "apps/accounts", "glob": ".env", "output": "." },
           { "input": "apps/accounts", "glob": ".gitignore", "output": "." }
         ],
         "isolatedConfig": true,
