@@ -4,7 +4,7 @@ import {
   OnModuleDestroy,
   Logger,
 } from '@nestjs/common';
-import { PrismaClient, Prisma } from '@prisma/client/accounts';
+import { PrismaClient, Prisma } from '@prisma/accounts';
 
 @Injectable()
 export class PrismaService
