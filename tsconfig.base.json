@@ -23,6 +23,12 @@
       ],
       "@konstantin-serebryakov-pet-nodejs/interfaces": [
         "libs/interfaces/src/index.ts"
+      ],
+      "@konstantin-serebryakov-pet-nodejs/prisma-client-accounts": [
+        "libs/prisma-client-accounts/src/index.ts"
+      ],
+      "@konstantin-serebryakov-pet-nodejs/prisma-schema-accounts": [
+        "libs/prisma-schema-accounts/src/index.ts"
       ]
     }
   },

@@ -4,10 +4,10 @@ import { UserCommands } from './users.commands';
 import { UserEventEmitter } from './users.event-emitter';
 import { UserQueries } from './users.queries';
 import { UserService } from './users.service';
-import { PrismaModule } from '../../prisma/prisma.module';
+import { PrismaClientAccountsModule } from '@konstantin-serebryakov-pet-nodejs/prisma-client-accounts';
 
 @Module({
-	imports: [PrismaModule],
+	imports: [PrismaClientAccountsModule],
 	providers: [UsersRepository, UserEventEmitter, UserService],
 	exports: [UsersRepository, UserEventEmitter],
 	controllers: [UserCommands, UserQueries],
