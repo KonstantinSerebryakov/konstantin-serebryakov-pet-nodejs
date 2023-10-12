@@ -1,2 +1,2 @@
 web: node main.js
-release: npx prisma generate
+<!-- release: npx prisma generate -->
