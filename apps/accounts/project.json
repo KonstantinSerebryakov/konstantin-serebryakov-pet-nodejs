@@ -23,7 +23,8 @@
             "output": "./prisma"
           },
           { "input": "apps/accounts", "glob": ".env", "output": "." },
-          { "input": "apps/accounts", "glob": ".gitignore", "output": "." }
+          { "input": "apps/accounts", "glob": ".gitignore", "output": "." },
+          { "input": "node_modules/@prisma/accounts-client", "glob": "*", "output": "./node_modules/@prisma/accounts-client" }
         ],
         "isolatedConfig": true,
         "webpackConfig": "apps/accounts/webpack.config.js",
