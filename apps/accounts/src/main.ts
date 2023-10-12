@@ -6,7 +6,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
-  console.log(process.env.AMQP_HOSTNAME);
 	const app = await NestFactory.create(AppModule);
 	await app.init();
 	Logger.log(
