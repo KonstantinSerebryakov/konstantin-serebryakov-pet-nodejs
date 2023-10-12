@@ -191,8 +191,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PrismaService = void 0;
 const tslib_1 = __webpack_require__(5);
 const common_1 = __webpack_require__(2);
-const accounts_1 = __webpack_require__(12);
-let PrismaService = exports.PrismaService = PrismaService_1 = class PrismaService extends accounts_1.PrismaClient {
+const accounts_client_1 = __webpack_require__(12);
+let PrismaService = exports.PrismaService = PrismaService_1 = class PrismaService extends accounts_client_1.PrismaClient {
     constructor() {
         super({
             log: [
@@ -245,7 +245,7 @@ exports.PrismaService = PrismaService = PrismaService_1 = tslib_1.__decorate([
 /* 12 */
 /***/ ((module) => {
 
-module.exports = require("@prisma/accounts");
+module.exports = require("@prisma/accounts-client");
 
 /***/ }),
 /* 13 */
