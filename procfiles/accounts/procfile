@@ -1,2 +1,2 @@
 web: node main.js
-release: npx prisma migrate dev --name init
+release: npx prisma migrate deploy

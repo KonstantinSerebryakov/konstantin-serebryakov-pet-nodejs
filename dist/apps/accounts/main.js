@@ -245,7 +245,7 @@ exports.PrismaService = PrismaService = PrismaService_1 = tslib_1.__decorate([
 /* 12 */
 /***/ ((module) => {
 
-module.exports = require("@prisma/client");
+module.exports = require("@prisma/client/accounts");
 
 /***/ }),
 /* 13 */
