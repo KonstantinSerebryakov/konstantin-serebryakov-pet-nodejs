@@ -7,7 +7,8 @@
     "build-all": "nx run-many --target=build --projects accounts,api,profiles",
     "start-api": "nx run api:serve",
     "start-accounts": "nx run accounts:serve",
-    "start-profiles": "nx run profiles:serve"
+    "start-profiles": "nx run profiles:serve",
+    "generate-accounts-prisma-client": "nx run accounts:prisma generate"
   },
   "private": true,
   "dependencies": {

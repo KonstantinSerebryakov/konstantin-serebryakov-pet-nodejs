@@ -1,2 +1,2 @@
-web: npx nx run accounts:serve
-release: npx nx run accounts:prisma generate
+web: npm run start-accounts
+release: npm run generate-accounts-prisma-client
