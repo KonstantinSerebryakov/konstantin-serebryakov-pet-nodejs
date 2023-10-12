@@ -1,2 +1,2 @@
-web: node main.js
-<!-- release: npx prisma generate -->
+web: npx nx run accounts:serve
+release: npx nx run accounts:prisma generate
