@@ -10,6 +10,7 @@ export const getRMQConfig = (): IRMQServiceAsyncOptions => ({
       {
         login: process.env.AMQP_USER ?? '',
         password: process.env.AMQP_PASSWORD ?? '',
+        vhost: process.env.AMQP_VHOSTNAME ?? '',
         host: process.env.AMQP_HOSTNAME ?? '',
       },
     ],
