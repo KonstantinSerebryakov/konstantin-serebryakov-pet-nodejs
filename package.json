@@ -7,7 +7,7 @@
     "build": "nx run-many --target=generate-types --projects prisma-schema-accounts && nx run accounts:build",
     "build-full": "nx run-many --target=generate-types --projects prisma-schema-accounts && nx run-many --target=build --projects accounts,api,profiles",
     "start-api": "nx run api:serve",
-    "start-accounts": "node apps/accounts/main.js",
+    "start-accounts": "node dist/apps/accounts/main.js",
     "start-profiles": "nx run profiles:serve",
     "generate-accounts-prisma-client": "nx run accounts:prisma generate"
   },
