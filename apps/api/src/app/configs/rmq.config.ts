@@ -1,10 +1,10 @@
-import { IRMQServiceAsyncOptions } from 'nestjs-rmq';
+import { IRMQServiceAsyncOptions, IRMQServiceOptions } from 'nestjs-rmq';
 
 export const getRMQConfig = (): IRMQServiceAsyncOptions => ({
   // inject: [ConfigService],
   // imports: [ConfigModule],
   // useFactory: (configService: ConfigService) => ({
-  useFactory: () => ({
+  useFactory: ():IRMQServiceOptions => ({
     exchangeName: process.env.AMQP_EXCHANGE ?? '',
     connections: [
       {
