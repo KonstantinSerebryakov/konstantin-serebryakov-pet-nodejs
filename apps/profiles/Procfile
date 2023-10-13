@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 web: npm run start
+=======
+web: node main.js
+release: npx prisma migrate deploy
+>>>>>>> 4ea5d87ab9f03dfa33b5f0b46d58db581d394f4b
