@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start-all": "nx run-many --target=serve --projects accounts,api,profiles",
-    "build": "nx run-many --target=generate-types --projects prisma-schema-accounts,prisma-schema-profiles && nx run profiles:build",
+    "build": "nx run-many --target=generate-types --projects prisma-schema-accounts,prisma-schema-profiles && nx run-many --target=build --projects accounts,api,profiles",
     "start-debug-TODELETE": "node dist/apps/accounts/main.js",
     "start": "node dist/apps/accounts/main.js & node dist/apps/api/main.js & node dist/apps/profiles/main.js",
     "start-api": "node dist/apps/api/main.js",
