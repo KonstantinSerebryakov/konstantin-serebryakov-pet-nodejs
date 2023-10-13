@@ -4,10 +4,12 @@ import {
   NotFoundException,
   OnModuleInit,
 } from '@nestjs/common';
-import { PrismaService } from '../../prisma/prisma.service';
 import { ISocialMediaVariant } from '@konstantin-serebryakov-pet-nodejs/interfaces';
 import { ProfileEntity } from '../entities/profile.entity';
-import { Prisma } from '@prisma/client/profiles';
+import {
+  Prisma,
+  PrismaService,
+} from '@konstantin-serebryakov-pet-nodejs/prisma-client-profiles';
 import { CredentialEntity } from '../entities/credential.entity';
 import { SocialMediaNodeEntity } from '../entities/socialMediaNode.entity';
 import { SocialMediaVariantEntity } from '../entities/socialMediaVariant.entity';

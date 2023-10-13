@@ -29,6 +29,12 @@
       ],
       "@konstantin-serebryakov-pet-nodejs/prisma-schema-accounts": [
         "libs/prisma-schema-accounts/src/index.ts"
+      ],
+      "@konstantin-serebryakov-pet-nodejs/prisma-client-profiles": [
+        "libs/prisma-client-profiles/src/index.ts"
+      ],
+      "@konstantin-serebryakov-pet-nodejs/prisma-schema-profiles": [
+        "libs/prisma-schema-profiles/src/index.ts"
       ]
     }
   },

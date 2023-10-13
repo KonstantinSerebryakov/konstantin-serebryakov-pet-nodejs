@@ -15,7 +15,6 @@ import { IconsService } from './icons8.service';
 import { SocialMediaNodeEntity } from '../entities/socialMediaNode.entity';
 import { CredentialEntity } from '../entities/credential.entity';
 import { ProfileEntity } from '../entities/profile.entity';
-import { profile } from 'console';
 import {
   extractSocialMediaVariants,
   extractSocialMediaVariantsNames,
