@@ -22,6 +22,12 @@
         "cwd": "libs/prisma-schema-profiles"
       }
     },
+    "deploy": {
+      "command": "prisma migrate deploy",
+      "options": {
+        "cwd": "libs/prisma-schema-profiles"
+      }
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
