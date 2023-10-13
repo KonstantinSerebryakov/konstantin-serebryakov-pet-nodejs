@@ -16,7 +16,6 @@
         "tsConfig": "apps/profiles/tsconfig.app.json",
         "assets": [
           "apps/profiles/src/assets",
-          { "input": "apps/profiles", "glob": ".env", "output": "." },
           { "input": "apps/profiles", "glob": ".gitignore", "output": "." }
         ],
         "isolatedConfig": true,

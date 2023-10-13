@@ -16,8 +16,7 @@
         "tsConfig": "apps/accounts/tsconfig.app.json",
         "assets": [
           "apps/accounts/src/assets",
-          { "input": "apps/accounts", "glob": ".gitignore", "output": "." },
-          { "input": "apps/accounts", "glob": ".env", "output": "." }
+          { "input": "apps/accounts", "glob": ".gitignore", "output": "." }
         ],
         "isolatedConfig": true,
         "webpackConfig": "apps/accounts/webpack.config.js",
