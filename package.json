@@ -5,6 +5,7 @@
   "scripts": {
     "start-all": "nx run-many --target=serve --projects accounts,api,profiles",
     "build": "nx run-many --target=generate-types --projects prisma-schema-accounts,prisma-schema-profiles && nx run accounts:build",
+    "start": "node dist/apps/accounts/main.js",
     "start-bckp": "node dist/apps/accounts/main.js & node dist/apps/api/main.js & node dist/apps/profiles/main.js",
     "start-api": "node dist/apps/api/main.js",
     "start-accounts": "node dist/apps/accounts/main.js",
