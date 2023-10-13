@@ -16,12 +16,8 @@
         "tsConfig": "apps/accounts/tsconfig.app.json",
         "assets": [
           "apps/accounts/src/assets",
-          {
-            "input": "apps/accounts/src/prisma",
-            "glob": "**/*",
-            "output": "./prisma"
-          },
-          { "input": "apps/accounts", "glob": ".gitignore", "output": "." }
+          { "input": "apps/accounts", "glob": ".gitignore", "output": "." },
+          { "input": "apps/accounts", "glob": ".env", "output": "." }
         ],
         "isolatedConfig": true,
         "webpackConfig": "apps/accounts/webpack.config.js",

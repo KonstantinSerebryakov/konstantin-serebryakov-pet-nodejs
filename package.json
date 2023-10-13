@@ -4,12 +4,14 @@
   "license": "MIT",
   "scripts": {
     "start-all": "nx run-many --target=serve --projects accounts,api,profiles",
-    "build": "nx run-many --target=generate-types --projects prisma-schema-accounts && nx run accounts:build",
-    "build-full": "nx run-many --target=generate-types --projects prisma-schema-accounts && nx run-many --target=build --projects accounts,api,profiles",
-    "start-api": "nx run api:serve",
+    "build": "nx run-many --target=generate-types --projects prisma-schema-accounts,prisma-schema-profiles && nx run accounts:build",
+    "start-bckp": "node dist/apps/accounts/main.js & node dist/apps/api/main.js & node dist/apps/profiles/main.js",
+    "start-api": "node dist/apps/api/main.js",
     "start-accounts": "node dist/apps/accounts/main.js",
-    "start-profiles": "nx run profiles:serve",
-    "generate-accounts-prisma-client": "nx run accounts:prisma generate"
+    "start-profiles": "node dist/apps/profiles/main.js",
+    "serve-api": "nx run api:serve",
+    "serve-accounts": "node dist/apps/accounts/main.js",
+    "serve-profiles": "nx run profiles:serve"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "class-validator-extended": "^3.1.2",
+    "concurrently": "^8.2.1",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
     "nestjs-rmq": "^2.10.0",
