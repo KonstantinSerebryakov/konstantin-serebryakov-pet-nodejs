@@ -1,1 +1,1 @@
-npm run build-accounts
+npm install;npm run build-accounts
