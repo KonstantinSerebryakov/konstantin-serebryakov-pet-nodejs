@@ -13,7 +13,7 @@ export const getRMQConfig = (): IRMQServiceAsyncOptions => ({
 				host: process.env.AMQP_HOSTNAME ?? ''
 			}
 		],
-		queueName: process.env.AMQP_QUEUE,
+		queueName: process.env.AMQP_QUEUE_ACCOUNTS,
 		prefetchCount: 32,
 		serviceName: 'rmq-account'
 		// exchangeName: configService.get('AMQP_EXCHANGE') ?? '',
