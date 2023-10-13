@@ -6,7 +6,8 @@
     "start-all": "nx run-many --target=serve --projects accounts,api,profiles",
     "build": "nx run-many --target=generate-types --projects prisma-schema-accounts,prisma-schema-profiles && nx run-many --target=build --projects accounts,api,profiles",
     "start-debug-TODELETE": "node dist/apps/accounts/main.js",
-    "start": "node dist/apps/accounts/main.js & node dist/apps/api/main.js & node dist/apps/profiles/main.js",
+    "start": "node dist/apps/accounts/main.js",
+    "start-bckp": "node dist/apps/accounts/main.js & node dist/apps/api/main.js & node dist/apps/profiles/main.js",
     "start-api": "node dist/apps/api/main.js",
     "start-accounts": "node dist/apps/accounts/main.js",
     "start-profiles": "node dist/apps/profiles/main.js",
@@ -18,6 +19,7 @@
   "dependencies": {
     "@nestjs/axios": "^3.0.0",
     "@nestjs/common": "^10.0.2",
+    "@nestjs/config": "^3.1.1",
     "@nestjs/core": "^10.0.2",
     "@nestjs/jwt": "^10.1.0",
     "@nestjs/passport": "^10.0.0",
@@ -38,10 +40,10 @@
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@nestjs/config": "^3.0.0",
     "@nestjs/mongoose": "^10.0.1",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
