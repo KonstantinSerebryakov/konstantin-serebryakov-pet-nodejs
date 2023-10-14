@@ -1,27 +1,36 @@
 @echo off
 
-:: Set the path to the Git Bash executable
-set GIT_BASH_PATH="C:\Program Files\Git\bin\bash.exe"
+:: Define your Heroku app name
+set APP_NAME=share-portfolio-accounts
+set TEMP_NAME=heroku-set-commands.txt
 
-:: Get the full path to the directory containing the batch script
-set currentDir=%~dp0
-:: Set the path to your Bash script
-set BASH_SCRIPT_PATH=%currentDir%\"push.sh"
+if [%1] == [] (
+    set ENV_FILE=.env
+) else (
+    set ENV_FILE=%1
+)
 
-:: Check if Git Bash executable exists
-if not exist %GIT_BASH_PATH% (
-    echo Git Bash is not found. Please install Git Bash and set the correct path.
+if not exist %ENV_FILE% (
+    echo The specified .env file "%ENV_FILE%" does not exist.
     exit /b 1
 )
 
-:: Check if the Bash script exists
-if not exist %BASH_SCRIPT_PATH% (
-    echo Bash script not found at %BASH_SCRIPT_PATH%.
-    exit /b 1
+if exist %TEMP_NAME% (
+  del "%TEMP_NAME%"
+)
+echo.>"%TEMP_NAME%"
+
+for /F "tokens=1,2 delims==" %%A in (%ENV_FILE%) do (
+@REM for /F "tokens=*" %%A in (%ENV_FILE%) do (
+  set TEMP_NAME=tempfile_%random%_%time:~6,5%.bat
+  call heroku config:set %%A="%%B" --app %APP_NAME%>%TEMP_NAME%
+
+  @REM start cmd /c /wait heroku config:set %%A --app %APP_NAME%>%TEMP_NAME%
+  echo heroku config:set %%A="%%B" --app %APP_NAME%>>"%TEMP_NAME%"
 )
 
-:: Execute the Bash script using Git Bash
-%GIT_BASH_PATH% --login -i %BASH_SCRIPT_PATH%
+call temp.bat
+echo Config vars updated on Heroku app: %APP_NAME%
 
 :: Exit the batch script
 exit /b 0

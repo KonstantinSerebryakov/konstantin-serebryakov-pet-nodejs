@@ -1,0 +1,2 @@
+DATABASE_URL_PROFILES: postgresql://postgres:Tki6y8sM7xM04vpl@db.mzrawswjsvajmwgepfhk.supabase.co:5432/postgres?schema
+heroku config:set DATABASE_URL_PROFILES="postgresql://postgres:Tki6y8sM7xM04vpl@db.mzrawswjsvajmwgepfhk.supabase.co:5432/postgres?schema" --app share-portfolio-accounts
