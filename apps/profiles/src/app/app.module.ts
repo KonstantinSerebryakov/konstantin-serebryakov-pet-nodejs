@@ -9,14 +9,20 @@ import { ProfilesEvents } from './controllers/profiles.events';
 import { HttpModule } from '@nestjs/axios';
 import { IconsService } from './services/icons8.service';
 import { ProfilesNestedCommands } from './controllers/profiles-nested.commands';
+import { PrismaClientProfilesModule } from '@konstantin-serebryakov-pet-nodejs/prisma-client-profiles';
 
 @Module({
-	imports: [
+  imports: [
     HttpModule,
-		RMQModule.forRootAsync(getRMQConfig()),
-	],
-  controllers: [ProfilesCommands, ProfilesNestedCommands, ProfilesQueries, ProfilesEvents],
-	providers: [ProfilesRepository, ProfileService, IconsService],
+    RMQModule.forRootAsync(getRMQConfig()),
+    PrismaClientProfilesModule,
+  ],
+  controllers: [
+    ProfilesCommands,
+    ProfilesNestedCommands,
+    ProfilesQueries,
+    ProfilesEvents,
+  ],
+  providers: [ProfilesRepository, ProfileService, IconsService],
 })
-export class AppModule {
-}
+export class AppModule {}
