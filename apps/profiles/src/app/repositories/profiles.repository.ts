@@ -40,7 +40,7 @@ export class ProfilesRepository implements OnModuleInit {
           .upsert({
             where: { name: variant.name },
             create: variant,
-            update: { name: variant.name },
+            update: {},
           })
           .then((variant) => variant.id);
       })
