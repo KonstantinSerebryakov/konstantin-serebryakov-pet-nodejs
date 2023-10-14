@@ -19,7 +19,7 @@ import { ProfilesNestedController } from './controllers/profiles-nested.controll
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'assets/client'),
+      rootPath: join(__dirname, '..', './assets/client'),
       renderPath: '/',
     }),
     ConfigModule.forRoot({ envFilePath: 'envs/.api.env', isGlobal: true }),
