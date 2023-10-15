@@ -13,8 +13,8 @@ import { PrismaClientProfilesModule } from '@konstantin-serebryakov-pet-nodejs/p
 
 @Module({
   imports: [
-    HttpModule,
     RMQModule.forRootAsync(getRMQConfig()),
+    HttpModule,
     PrismaClientProfilesModule,
   ],
   controllers: [
