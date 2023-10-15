@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Logger,
   Post,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -40,6 +41,8 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() dto: LoginDto) {
+    Logger.log("Got Login request with payload:");
+    Logger.log(dto);
     try {
       const id = await this.apiService.generateRequestId(CONTROLLER_PREFIX);
       return await this.rmqService.send<
