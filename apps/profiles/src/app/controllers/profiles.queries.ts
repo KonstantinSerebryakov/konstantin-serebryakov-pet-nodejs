@@ -4,10 +4,10 @@ import {
   ProfileQuery,
   ProfileQueryDefault,
   ProfileQueryUserProfilesIds,
+  ProfileQueryUserProfilesList,
 } from '@konstantin-serebryakov-pet-nodejs/contracts';
-import { IProfile } from '@konstantin-serebryakov-pet-nodejs/interfaces';
-import { ProfilesRepository } from '../repositories/profiles.repository';
-import { ProfileService } from '../services/porfiles.service';
+import { ProfilesService } from '../services/porfiles.service';
+import { ProfileRepository } from '../repositories/profile.repository';
 
 // query default
 // query
@@ -16,8 +16,8 @@ import { ProfileService } from '../services/porfiles.service';
 @Controller()
 export class ProfilesQueries {
   constructor(
-    private readonly profileRepository: ProfilesRepository,
-    private readonly profileService: ProfileService
+    private readonly profileRepository: ProfileRepository,
+    private readonly profileService: ProfilesService
   ) {}
 
   @RMQValidate()
@@ -55,6 +55,17 @@ export class ProfilesQueries {
     const ids = await this.profileRepository.findManyProfileIdsByUserId(userId);
     return {
       profileIds: ids,
+    }
+  }
+
+  @RMQValidate()
+  @RMQRoute(ProfileQueryUserProfilesList.topic)
+  async getProfilesListForUser(
+    @Body() { userId }: ProfileQueryUserProfilesList.Request
+  ): Promise<ProfileQueryUserProfilesList.Response> {
+    const profiles = await this.profileRepository.findManyProfileWithEssentialListByUserId(userId);
+    return {
+      profiles: profiles,
     }
   }
 }

@@ -5,11 +5,11 @@ import {
   ProfileChangeDefault,
   ProfileQueryDefault,
 } from '@konstantin-serebryakov-pet-nodejs/contracts';
-import { ProfileService } from '../services/porfiles.service';
+import { ProfilesService } from '../services/porfiles.service';
 
 @Controller()
 export class ProfilesEvents {
-  constructor(private readonly profileService: ProfileService) {}
+  constructor(private readonly profileService: ProfilesService) {}
 
   @RMQValidate()
   @RMQRoute(AccountUserCreatedEvent.topic)

@@ -17,8 +17,19 @@ model Profile {
   isDefault Boolean @default(false)
 
   credential    Credential?
+  essentialInfo    EssentialInfo?
   socialMediaNodes  SocialMediaNode[]
   PublicProfile PublicProfile?
+}
+
+model EssentialInfo {
+  id        String @id @unique @default(cuid())
+  profileId String @unique
+
+  position String
+  about String
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
 model Credential {

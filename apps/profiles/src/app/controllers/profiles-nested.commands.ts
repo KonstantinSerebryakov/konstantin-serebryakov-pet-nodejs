@@ -1,6 +1,6 @@
 import { Body, Controller, UnauthorizedException } from '@nestjs/common';
 import { RMQValidate, RMQRoute } from 'nestjs-rmq';
-import { ProfileService } from '../services/porfiles.service';
+import { ProfilesService } from '../services/porfiles.service';
 import { ProfileEntity } from '../entities/profile.entity';
 import { CredentialEntity } from '../entities/credential.entity';
 import {
@@ -13,7 +13,7 @@ import { SocialMediaNodeEntity } from '../entities/socialMediaNode.entity';
 
 @Controller()
 export class ProfilesNestedCommands {
-  constructor(private readonly profileService: ProfileService) {}
+  constructor(private readonly profileService: ProfilesService) {}
 
   @RMQValidate()
   @RMQRoute(ProfileChangeCredential.topic)

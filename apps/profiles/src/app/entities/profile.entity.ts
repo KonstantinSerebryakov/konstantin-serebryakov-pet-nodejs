@@ -1,16 +1,14 @@
-import {
-   ICredential,
-  IProfile,
-  ISocialMedias,
-} from '@konstantin-serebryakov-pet-nodejs/interfaces';
+import { IProfile } from '@konstantin-serebryakov-pet-nodejs/interfaces';
 import { CredentialEntity } from './credential.entity';
 import { SocialMediaNodeEntity } from './socialMediaNode.entity';
+import { EssentialInfoEntity } from './essentialInfoEntity';
 
 export class ProfileEntity implements IProfile {
   id?: string;
   userId: string;
   socialMediaNodes?: SocialMediaNodeEntity[];
   credential?: CredentialEntity | null;
+  essentialInfo?: EssentialInfoEntity | null;
 
   constructor(profile: IProfile) {
     this.id = profile.id;
@@ -20,9 +18,14 @@ export class ProfileEntity implements IProfile {
     });
     if (profile.credential)
       this.credential = new CredentialEntity(profile.credential);
+    if (profile.essentialInfo)
+      this.essentialInfo = new EssentialInfoEntity(profile.essentialInfo);
   }
 
-  public getPublicSelf(): Omit<IProfile, 'id' | 'socialMediaNodes' | 'credential'> {
+  public getPublicSelf(): Omit<
+    IProfile,
+    'id' | 'socialMediaNodes' | 'credential' | 'essentialInfo'
+  > {
     return {
       userId: this.userId,
     };
@@ -44,5 +47,9 @@ export class ProfileEntity implements IProfile {
 
   public getCredentialsEntity() {
     return this.credential;
+  }
+
+  public getEssentialInfoEntity() {
+    return this.essentialInfo;
   }
 }

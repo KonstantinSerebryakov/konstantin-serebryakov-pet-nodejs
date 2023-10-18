@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "migrate": "nx run-many --target=migrate --projects prisma-schema-accounts,prisma-schema-profiles",
+    "prisma-migrate": "nx run-many --target=migrate --projects prisma-schema-accounts,prisma-schema-profiles",
+    "prisma-generate": "nx run-many --target=generate-types --projects prisma-schema-accounts,prisma-schema-profiles",
     "build": "nx run-many --target=generate-types --projects prisma-schema-accounts,prisma-schema-profiles && nx run-many --target=build --projects accounts,api,profiles",
     "start": "node dist/apps/accounts/main.js & node dist/apps/api/main.js & node dist/apps/profiles/main.js",
     "start-api": "node dist/apps/api/main.js",

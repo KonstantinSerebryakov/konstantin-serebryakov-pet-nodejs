@@ -17,6 +17,7 @@ export * from './lib/profile/profile.query-profile';
 export * from './lib/profile/profile.change-default';
 export * from './lib/profile/profile.query-profile-default';
 export * from './lib/profile/profile.query-user-profiles-ids';
+export * from './lib/profile/profile.query-user-profiles-list';
 
 export * from './lib/profile/nested/profile.change-credential';
 export * from './lib/profile/nested/profile.change-credential-default';

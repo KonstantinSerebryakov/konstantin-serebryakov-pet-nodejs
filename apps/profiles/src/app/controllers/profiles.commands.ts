@@ -8,16 +8,16 @@ import {
   ProfileDeleteOne,
   ProfileQueryDefault,
 } from '@konstantin-serebryakov-pet-nodejs/contracts';
-import { ProfilesRepository } from '../repositories/profiles.repository';
-import { ProfileService } from '../services/porfiles.service';
+import { ProfilesService } from '../services/porfiles.service';
 import { ProfileEntity } from '../entities/profile.entity';
 import { CredentialEntity } from '../entities/credential.entity';
+import { ProfileRepository } from '../repositories/profile.repository';
 
 @Controller()
 export class ProfilesCommands {
   constructor(
-    private readonly profileService: ProfileService,
-    private readonly profileRepository: ProfilesRepository) {}
+    private readonly profileService: ProfilesService,
+    private readonly profileRepository: ProfileRepository) {}
 
   @RMQValidate()
   @RMQRoute(ProfileCreateOne.topic)

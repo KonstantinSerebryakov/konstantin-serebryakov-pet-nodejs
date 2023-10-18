@@ -1,17 +1,5 @@
-import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-  Logger,
-  NotFoundException,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { RMQService } from 'nestjs-rmq';
-import { ProfilesRepository } from '../repositories/profiles.repository';
-import { IProfile } from '@konstantin-serebryakov-pet-nodejs/interfaces';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { SocialMediaVariantEntity } from '../entities/socialMediaVariant.entity';
-import { HttpService } from '@nestjs/axios';
-import { IconsService } from './icons8.service';
 import { SocialMediaNodeEntity } from '../entities/socialMediaNode.entity';
 import { CredentialEntity } from '../entities/credential.entity';
 import { ProfileEntity } from '../entities/profile.entity';
@@ -19,18 +7,24 @@ import {
   extractSocialMediaVariants,
   extractSocialMediaVariantsNames,
 } from '../entities/entities.utility';
-// import { IProfileDefaults } from '@konstantin-serebryakov-pet-nodejs/interfaces';
+import { ProfileRepository } from '../repositories/profile.repository';
+import { CredentialRepository } from '../repositories/credential.repository';
+import { SocialMediasRepository } from '../repositories/social-medias.repository';
 
 @Injectable()
-export class ProfileService {
-  constructor(private readonly profilesRepository: ProfilesRepository) {}
+export class ProfilesService {
+  constructor(
+    private readonly profileRepository: ProfileRepository,
+    private readonly credentialRepository: CredentialRepository,
+    private readonly socialMediasRepository: SocialMediasRepository
+  ) {}
 
   async generateProfileDefault(userId: string) {
-    return this.profilesRepository.generateProfileDefault(userId);
+    return this.profileRepository.generateProfileDefault(userId);
   }
 
   async createProfile(userId: string) {
-    return this.profilesRepository.createProfile(userId);
+    return this.profileRepository.createProfile(userId);
   }
 
   async updateProfile(profileId: string, profile: ProfileEntity) {
@@ -40,7 +34,7 @@ export class ProfileService {
     if (profile.credential) {
       await this.updateCredential(profileId, profile.credential);
     }
-    const profileUpdateResult = await this.profilesRepository.updateProfileSelf(
+    const profileUpdateResult = await this.profileRepository.updateProfileSelf(
       profileId,
       profile
     );
@@ -48,7 +42,7 @@ export class ProfileService {
   }
 
   async updateCredential(profileId: string, credential: CredentialEntity) {
-    return this.profilesRepository.updateCredentialByProfileId(
+    return this.credentialRepository.updateCredentialByProfileId(
       profileId,
       credential
     );
@@ -61,7 +55,7 @@ export class ProfileService {
       socialMediaNodes
     );
     const storedVariants =
-      await this.profilesRepository.findExistedSocialMediaVariantsByNames(
+      await this.socialMediasRepository.findExistedSocialMediaVariantsByNames(
         variantNames
       );
     socialMediaNodes.forEach((node) => {
@@ -83,7 +77,7 @@ export class ProfileService {
       socialMediaNodes
     );
 
-    return this.profilesRepository.updateSocialMedias(
+    return this.socialMediasRepository.updateSocialMedias(
       profileId,
       socialMediaNodes
     );
@@ -92,7 +86,7 @@ export class ProfileService {
   async appendSocialMediasVariants(variants: SocialMediaVariantEntity[]) {
     const names = variants.map((variant) => variant.name);
     const existedNames =
-      await this.profilesRepository.findExistedSocialMediaVariantNamesByNames(
+      await this.socialMediasRepository.findExistedSocialMediaVariantNamesByNames(
         names
       );
     const notExisted = variants.filter(
@@ -100,7 +94,7 @@ export class ProfileService {
     );
     // TODO: uncomment
     // await this.iconsService.fillSocialMediaVariantIcons(notExisted);
-    return this.profilesRepository.createSocialMediaVariants(notExisted);
+    return this.socialMediasRepository.createSocialMediaVariants(notExisted);
   }
 
   //
@@ -108,21 +102,24 @@ export class ProfileService {
   //
 
   async isProfilePublic(profileId: string) {
-    return this.profilesRepository.isProfilePublic(profileId);
+    return this.profileRepository.isProfilePublic(profileId);
   }
 
   async validateProfileQueryPermission(profileId: string, userId: string) {
     const isPublic = await this.isProfilePublic(profileId);
     if (isPublic) return true;
 
-    const isUserAllowed = await this.validateProfileEditPermission(userId, profileId);
+    const isUserAllowed = await this.validateProfileEditPermission(
+      userId,
+      profileId
+    );
     if (isUserAllowed) return true;
 
     throw new UnauthorizedException();
   }
 
   async validateProfileEditPermission(userId: string, profileId: string) {
-    const profile = await this.profilesRepository.findProfileNestedById(
+    const profile = await this.profileRepository.findProfileNestedById(
       profileId
     );
     if (profile.userId !== userId) throw new UnauthorizedException();
@@ -130,6 +127,6 @@ export class ProfileService {
   }
 
   async getDefaultProfileId(userId: string) {
-    return this.profilesRepository.findProfileDefaultId(userId);
+    return this.profileRepository.findProfileDefaultId(userId);
   }
 }

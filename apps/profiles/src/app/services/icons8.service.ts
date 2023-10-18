@@ -1,7 +1,4 @@
-import { Injectable, Logger, NotFoundException, NotImplementedException } from '@nestjs/common';
-import { RMQService } from 'nestjs-rmq';
-import { ProfilesRepository } from '../repositories/profiles.repository';
-import { IProfile } from '@konstantin-serebryakov-pet-nodejs/interfaces';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { SocialMediaVariantEntity } from '../entities/socialMediaVariant.entity';
 import { HttpService } from '@nestjs/axios';
 // import { IProfileDefaults } from '@konstantin-serebryakov-pet-nodejs/interfaces';
