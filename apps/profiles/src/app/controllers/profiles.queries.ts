@@ -52,7 +52,7 @@ export class ProfilesQueries {
   async getProfilesIdsForUser(
     @Body() { userId }: ProfileQueryUserProfilesIds.Request
   ): Promise<ProfileQueryUserProfilesIds.Response> {
-    const ids = await this.profileRepository.findManyProfileIdsByUserId(userId);
+    const ids = await this.profileRepository.findManyProfileIdListByUserId(userId);
     return {
       profileIds: ids,
     }

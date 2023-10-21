@@ -1,7 +1,5 @@
 import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
-import {
-  ISocialMediaVariant,
-} from '@konstantin-serebryakov-pet-nodejs/interfaces';
+import { ISocialMediaVariant } from '@konstantin-serebryakov-pet-nodejs/interfaces';
 import { ProfileEntity } from '../entities/profile.entity';
 import {
   Prisma,
@@ -179,17 +177,19 @@ export class ProfileRepository implements OnModuleInit {
     return this.queryFindProfileNested(filter);
   }
 
-  async findManyProfileIdsByUserId(userId: string) {
+  //note: excluding default!
+  async findManyProfileIdListByUserId(userId: string) {
     const queried = await this.prisma.profile.findMany({
       select: { id: true },
-      where: { userId: userId },
+      where: { userId: userId, isDefault: false },
     });
 
     return queried.map((item) => item.id);
   }
+  //note: excluding default!
   async findManyProfileWithEssentialListByUserId(userId: string) {
     const queried = await this.prisma.profile.findMany({
-      where: { userId: userId },
+      where: { userId: userId, isDefault: false },
       include: { credential: true, essentialInfo: true },
     });
     return queried.map((item) => new ProfileEntity(item));

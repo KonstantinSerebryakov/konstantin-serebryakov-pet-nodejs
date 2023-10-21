@@ -1,7 +1,7 @@
 import { IProfile } from '@konstantin-serebryakov-pet-nodejs/interfaces';
 import { CredentialEntity } from './credential.entity';
 import { SocialMediaNodeEntity } from './socialMediaNode.entity';
-import { EssentialInfoEntity } from './essentialInfoEntity';
+import { EssentialInfoEntity } from './essentialInfo.entity';
 
 export class ProfileEntity implements IProfile {
   id?: string;

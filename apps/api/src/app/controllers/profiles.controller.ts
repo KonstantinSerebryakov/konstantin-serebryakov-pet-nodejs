@@ -24,6 +24,7 @@ import {
   ProfileQuery,
   ProfileQueryDefault,
   ProfileQueryUserProfilesIds,
+  ProfileQueryUserProfilesList,
 } from '@konstantin-serebryakov-pet-nodejs/contracts';
 import { profile } from 'console';
 
@@ -82,8 +83,8 @@ export class ProfilesController {
   }
 
   @UseGuards(JWTAuthGuard)
-  @Get('list')
-  async getProfilesList(@UserId() userId: string) {
+  @Get('list/id')
+  async getProfilesIdsList(@UserId() userId: string) {
     try {
       const id = await this.apiService.generateRequestId(CONTROLLER_PREFIX);
       return await this.rmqService.send<
@@ -91,6 +92,27 @@ export class ProfilesController {
         ProfileQueryUserProfilesIds.Response
       >(
         ProfileQueryUserProfilesIds.topic,
+        { userId: userId },
+        { headers: { requestId: id } }
+      );
+    } catch (e) {
+      if (e instanceof Error) {
+        console.log(e.message);
+        throw new InternalServerErrorException(e.message);
+      }
+    }
+  }
+
+  @UseGuards(JWTAuthGuard)
+  @Get('list/essential')
+  async getProfilesEssentialsList(@UserId() userId: string) {
+    try {
+      const id = await this.apiService.generateRequestId(CONTROLLER_PREFIX);
+      return await this.rmqService.send<
+        ProfileQueryUserProfilesList.Request,
+        ProfileQueryUserProfilesList.Response
+      >(
+        ProfileQueryUserProfilesList.topic,
         { userId: userId },
         { headers: { requestId: id } }
       );
