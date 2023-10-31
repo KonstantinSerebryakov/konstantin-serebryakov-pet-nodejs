@@ -1,1 +1,0 @@
-import{f as s,j as a}from"./index.a468aedf.js";var c=s(({app:r,router:i})=>{r.config.globalProperties.$api,r.config.globalProperties.$api.interceptors.request.use(e=>{var o;const t=(o=a())==null?void 0:o.access_token;return t&&(e.headers.Authorization=`Bearer ${t}`),e},e=>Promise.reject(e))});export{c as default};
